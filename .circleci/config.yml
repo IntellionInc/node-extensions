@@ -1,0 +1,53 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  build-and-test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - checkout
+            - run:
+                name: Set NPM Scope
+                command: echo //registry.npmjs.org/:_authToken=a2e1f400-b75b-4304-9f29-57b736cd445f > ~/.npmrc
+            - run: 
+                name: Install dependencies
+                command: npm install
+            - save_cache:
+                paths:
+                    - node_modules
+                key: v1-dependencies-{{ checksum package-lock.json }}
+            # - run: mkdir reports
+            # Run mocha tests
+            - run:
+                name: Run tests
+                command: npm test
+                when: always
+            # Run coverage
+            - run:
+                name: Run coverage
+                command: npm run cover
+                when: always
+            - run:
+                name: Setup Code Climate test-reporter
+                command: |
+                    # download test reporter as a static binary
+                    curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+                    chmod +x ./cc-test-reporter
+                    ./cc-test-reporter before-build
+                when: always
+            - run:
+                name: Send coverage report to Code Climate
+                command:
+                    ./cc-test-reporter after-build -t lcov
+                when: always
+            - store_artifacts:
+                path: ./coverage/lcov.info
+                prefix: tests
+workflows:
+    build-and-test:
+      jobs:
+        - build-and-test
