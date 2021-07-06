@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha '*/**/*.spec.js'",
+    "test": "mocha --exit './test/**/*.spec.js'",
     "cover": "c8 --require esm npm test"
   },
   "repository": {
