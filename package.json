@@ -1,5 +1,5 @@
 {
-  "name": "@intellioninc/extensions",
+  "name": "@intellion/extensions",
   "type": "module",
   "version": "1.0.0",
   "description": "",
@@ -26,5 +26,9 @@
   },
   "engines": {
     "node": ">=14.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }
