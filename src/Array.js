@@ -15,4 +15,10 @@ Object.defineProperties(Array.prototype, {
       return this;
     },
   },
+  removeLast: {
+    value: function() {
+      this.pop();
+      return this;
+    }
+  }
 });
