@@ -31,4 +31,29 @@ describe("String", () => {
       });
     });
   });
+  describe("toCamelCase", () => {
+    const cases = [
+      {
+        input: "aliceBob",
+        result: "aliceBob"
+      },
+      {
+        input: "AliceBob",
+        result: "aliceBob"
+      },
+      {
+        input: "Alice Bob",
+        result: "aliceBob",
+      },
+      {
+        input: "aliceBob carol",
+        result: "aliceBobCarol"
+      }
+    ];
+    it("should return the input in title case", () => {
+      cases.forEach(({ input, result }) => {
+        expect(input.toCamelCase()).to.eq(result);
+      });
+    });
+  });
 });
