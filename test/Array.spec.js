@@ -14,4 +14,11 @@ describe("Array", () => {
       expect(array1.last()).to.eq(3);
     });
   });
+  describe("append", () => {
+    let arr = [...array1];
+    let items = ["$", "a"];
+    it("should push the arguments to the array and return the array ", () => {
+      expect(arr.append(...items)).to.eq(arr)
+    });
+  });
 });
