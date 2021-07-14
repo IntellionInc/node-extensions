@@ -35,3 +35,37 @@ describe("Array", () => {
     });
   });
 });
+describe("looselyEquals", () => {
+  context("when arrays include only primitives", () => {
+    let arr = ["c", "d", 1, 3];
+    context("when loosely equals", () => {
+      let result = ["c", "d", 1, 3];
+      it("should return true", () => {
+        expect(arrayEqual(arr, result)).to.eq(true);
+      });
+    });
+    context("when not loosely equals", () => {
+      let result = ["c", "d", 3, 1];
+      it("should return false", () => {
+        expect(arrayEqual(arr, result)).to.eq(false);
+      });
+    });
+  });
+  context("when arrays include non-primitive values", () => {
+    let obj1 = { some: "obj" };
+    let arr = ["c", "d", 1, obj1];
+    context("when all values and references are the same", () => {
+      let result = ["c", "d", 1, obj1];
+      it("should return true", () => {
+        expect(arrayEqual(arr, result)).to.eq(true);
+      });
+    });
+    context("when some references are different", () => {
+      let obj2 = { some: "obj" };
+      let result = ["c", "d", 1, obj2];
+      it("should return false", () => {
+        expect(arrayEqual(arr, result)).to.eq(false);
+      });
+    });
+  });
+});

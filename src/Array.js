@@ -20,5 +20,10 @@ Object.defineProperties(Array.prototype, {
       this.pop();
       return this;
     }
+  },
+  looselyEquals: {
+    value: function(arr) {
+      return this.every((item, i), arr[i] === item)
+    }
   }
 });
