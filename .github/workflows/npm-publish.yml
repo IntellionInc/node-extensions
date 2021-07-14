@@ -9,18 +9,32 @@ on:
       - master
 
 jobs:
-  publish-npm:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-          registry-url: 'https://registry.npmjs.org'
-      # Skip post-install scripts here, as a malicious
-      # script could steal NODE_AUTH_TOKEN.
-      - run: npm publish --ignore-scripts
+          registry-url: 'https://registry.npmjs.org/'
+      - run: npm ci --ignore-scripts
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # `npm rebuild` will run all those post-install scripts for us.
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: npm test --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: npm rebuild && npm run prepare --if-present
+      
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org/'
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
       - run: npm rebuild && npm run prepare --if-present
