@@ -2,7 +2,9 @@ import "../src/Array.js";
 import { expect } from "./matchalatte.js";
 
 const arrayEqual = (a1, a2) =>
-  a1.length === a2.length && a1.every((item, i) => a2[i] === item);
+  [a1, a2].every((a) => Array.isArray(a)) &&
+  a1.length === a2.length &&
+  a1.every((item, i) => a2[i] === item);
 
 describe("Array", () => {
   let array1 = ["c", "d", 1, 3];
