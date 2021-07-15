@@ -1,8 +1,8 @@
 Object.defineProperties(Array.prototype, {
   first: {
-    get: function() {
+    get: function () {
       return this[0];
-    }
+    },
   },
   last: {
     get: function () {
@@ -16,14 +16,19 @@ Object.defineProperties(Array.prototype, {
     },
   },
   removeLast: {
-    value: function() {
+    value: function () {
       this.pop();
       return this;
-    }
+    },
   },
   looselyEquals: {
-    value: function(arr) {
-      return this.every((item, i) => arr[i] === item)
-    }
-  }
+    value: function (arr) {
+      return this.every((item, i) => arr[i] === item);
+    },
+  },
+  pluck: {
+    value: function (key) {
+      return this.map((item) => item[key]);
+    },
+  },
 });

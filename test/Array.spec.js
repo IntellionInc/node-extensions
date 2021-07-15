@@ -69,4 +69,20 @@ describe("Array", () => {
       });
     });
   });
+  describe.only("pluck", () => {
+    const keys = [
+      { i: "value1-1", j: 1 },
+      { i: "value1-2", j: 2 },
+      { i: "value1-3", j: 3 },
+    ];
+    let arr = [
+      { key1: keys[0], key2: { i: "value2-1" } },
+      { key1: keys[1], key2: { i: "value2-2" } },
+      { key1: keys[2], key2: { i: "value2-3" } },
+    ];
+    it("should create a new array from a deconstructed property", () => {
+      let result = arr.pluck("key1");
+      result.forEach((key, i) => expect(key).to.eq(keys[i]));
+    });
+  });
 });
