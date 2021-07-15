@@ -17,7 +17,7 @@ Object.defineProperties(String.prototype, {
   },
   toPascalCase: {
     value: function () {
-      return this.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+      return this.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match) => {
         if (/\s+/.test(match)) return "";
         return match.toUpperCase();
       });
