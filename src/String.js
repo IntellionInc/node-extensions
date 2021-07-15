@@ -5,6 +5,8 @@ const convertSpacesAndFirstLetters = (casing) => {
       switch (casing) {
         case "snake":
           return index === 0 ? match : "_" + match;
+        case "pascal":
+          return match.toUpperCase();
         case "camel":
         default:
           return index === 0 ? match.toLowerCase() : match.toUpperCase();
@@ -22,10 +24,13 @@ Object.defineProperties(String.prototype, {
       );
     },
   },
-  toCamelCase: {
-    value: convertSpacesAndFirstLetters("camel"),
-  },
   toSnakeCase: {
     value: convertSpacesAndFirstLetters("snake"),
+  },
+  toPascalCase: {
+    value: convertSpacesAndFirstLetters("pascal"),
+  },
+  toCamelCase: {
+    value: convertSpacesAndFirstLetters("camel"),
   },
 });

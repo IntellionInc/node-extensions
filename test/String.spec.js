@@ -31,31 +31,6 @@ describe("String", () => {
       });
     });
   });
-  describe("toCamelCase", () => {
-    const cases = [
-      {
-        input: "aliceBob",
-        result: "aliceBob"
-      },
-      {
-        input: "AliceBob",
-        result: "aliceBob"
-      },
-      {
-        input: "Alice Bob",
-        result: "aliceBob",
-      },
-      {
-        input: "aliceBob carol",
-        result: "aliceBobCarol"
-      }
-    ];
-    it("should return the input in title case", () => {
-      cases.forEach(({ input, result }) => {
-        expect(input.toCamelCase()).to.eq(result);
-      });
-    });
-  });
   describe("toSnakeCase", () => {
     const cases = [
       {
@@ -78,6 +53,56 @@ describe("String", () => {
     it("should return the input in snake case", () => {
       cases.forEach(({ input, result }) => {
         expect(input.toSnakeCase()).to.eq(result);
+      });
+    });
+  });
+  describe("toPascalCase", () => {
+    const cases = [
+      {
+        input: "AliceBob",
+        result: "AliceBob"
+      },
+      {
+        input: "aliceBob",
+        result: "AliceBob"
+      },
+      {
+        input: "Alice Bob",
+        result: "AliceBob",
+      },
+      {
+        input: "aliceBob carol",
+        result: "AliceBobCarol"
+      }
+    ];
+    it("should return the input in snake case", () => {
+      cases.forEach(({ input, result }) => {
+        expect(input.toPascalCase()).to.eq(result);
+      });
+    });
+  });
+  describe("toCamelCase", () => {
+    const cases = [
+      {
+        input: "aliceBob",
+        result: "aliceBob"
+      },
+      {
+        input: "AliceBob",
+        result: "aliceBob"
+      },
+      {
+        input: "Alice Bob",
+        result: "aliceBob",
+      },
+      {
+        input: "aliceBob carol",
+        result: "aliceBobCarol"
+      }
+    ];
+    it("should return the input in title case", () => {
+      cases.forEach(({ input, result }) => {
+        expect(input.toCamelCase()).to.eq(result);
       });
     });
   });
