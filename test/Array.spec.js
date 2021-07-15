@@ -6,12 +6,12 @@ describe("Array", () => {
 
   describe("first", () => {
     it("should return the first item in an array", () => {
-      expect(array1.first()).to.eq("c");
+      expect(array1.first).to.eq("c");
     });
   });
   describe("last", () => {
     it("should return the last item of array", () => {
-      expect(array1.last()).to.eq(3);
+      expect(array1.last).to.eq(3);
     });
   });
   describe("append", () => {

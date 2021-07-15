@@ -1,11 +1,11 @@
 Object.defineProperties(Array.prototype, {
   first: {
-    value: function () {
+    get: function() {
       return this[0];
-    },
+    }
   },
   last: {
-    value: function () {
+    get: function () {
       return this[this.length - 1];
     },
   },
