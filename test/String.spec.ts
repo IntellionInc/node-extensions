@@ -1,5 +1,14 @@
-import "../src/String.js";
+import "../src/String.ts";
 import { expect } from "chai";
+
+declare global {
+  interface String {
+    toTitleCase(): string;
+    toSnakeCase(): string;
+    toPascalCase(): string;
+    toCamelCase(): string;
+  }
+}
 
 describe("String", () => {
   describe("toTitleCase", () => {
@@ -35,11 +44,11 @@ describe("String", () => {
     const cases = [
       {
         input: "alice_bob",
-        result: "alice_bob"
+        result: "alice_bob",
       },
       {
         input: "AliceBob",
-        result: "Alice_Bob"
+        result: "Alice_Bob",
       },
       {
         input: "Alice Bob",
@@ -47,8 +56,8 @@ describe("String", () => {
       },
       {
         input: "aliceBob carol",
-        result: "alice_Bob_carol"
-      }
+        result: "alice_Bob_carol",
+      },
     ];
     it("should return the input in snake case", () => {
       cases.forEach(({ input, result }) => {
@@ -60,11 +69,11 @@ describe("String", () => {
     const cases = [
       {
         input: "AliceBob",
-        result: "AliceBob"
+        result: "AliceBob",
       },
       {
         input: "aliceBob",
-        result: "AliceBob"
+        result: "AliceBob",
       },
       {
         input: "Alice Bob",
@@ -72,8 +81,8 @@ describe("String", () => {
       },
       {
         input: "aliceBob carol",
-        result: "AliceBobCarol"
-      }
+        result: "AliceBobCarol",
+      },
     ];
     it("should return the input in snake case", () => {
       cases.forEach(({ input, result }) => {
@@ -85,11 +94,11 @@ describe("String", () => {
     const cases = [
       {
         input: "aliceBob",
-        result: "aliceBob"
+        result: "aliceBob",
       },
       {
         input: "AliceBob",
-        result: "aliceBob"
+        result: "aliceBob",
       },
       {
         input: "Alice Bob",
@@ -97,8 +106,8 @@ describe("String", () => {
       },
       {
         input: "aliceBob carol",
-        result: "aliceBobCarol"
-      }
+        result: "aliceBobCarol",
+      },
     ];
     it("should return the input in title case", () => {
       cases.forEach(({ input, result }) => {

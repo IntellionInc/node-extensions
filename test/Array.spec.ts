@@ -1,8 +1,19 @@
-import "../src/Array.js";
+import "../src/Array.ts";
 import { expect } from "chai";
 
+declare global{
+  interface Array<T> {
+    first: unknown,
+    last: unknown,
+    append(...args: Array<T>): Array<T> ,
+    removeLast(): Array<T>,
+    looselyEquals(arr: Array<T>): boolean,
+    pluck(key: string): Array<T> 
+  }  
+}
+
 describe("Array", () => {
-  let array1 = ["c", "d", 1, 3];
+  let array1 = ["c", "d", 1, 3]
 
   describe("first", () => {
     it("should return the first item in an array", () => {

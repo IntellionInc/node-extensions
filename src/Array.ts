@@ -1,3 +1,7 @@
+interface PluckObject {
+  [key: string]: any
+}
+
 Object.defineProperties(Array.prototype, {
   first: {
     get: function () {
@@ -10,25 +14,25 @@ Object.defineProperties(Array.prototype, {
     },
   },
   append: {
-    value: function (...args) {
+    value: function (...args: []): [] {
       this.push(...args);
       return this;
     },
   },
   removeLast: {
-    value: function () {
+    value: function (): [] {
       this.pop();
       return this;
     },
   },
   looselyEquals: {
-    value: function (arr) {
-      return this.every((item, i) => arr[i] === item);
+    value: function (arr: []) {
+      return this.every((item: unknown, i: number) => arr[i] === item);
     },
   },
   pluck: {
-    value: function (key) {
-      return this.map((item) => item[key]);
+    value: function (key: string) {
+      return this.map((item: PluckObject) => item[key]);
     },
   },
 });
