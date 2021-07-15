@@ -56,4 +56,29 @@ describe("String", () => {
       });
     });
   });
+  describe("toSnakeCase", () => {
+    const cases = [
+      {
+        input: "alice_bob",
+        result: "alice_bob"
+      },
+      {
+        input: "AliceBob",
+        result: "Alice_Bob"
+      },
+      {
+        input: "Alice Bob",
+        result: "Alice_Bob",
+      },
+      {
+        input: "aliceBob carol",
+        result: "alice_Bob_carol"
+      }
+    ];
+    it("should return the input in snake case", () => {
+      cases.forEach(({ input, result }) => {
+        expect(input.toSnakeCase()).to.eq(result);
+      });
+    });
+  });
 });
