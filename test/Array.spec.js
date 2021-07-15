@@ -1,5 +1,5 @@
 import "../src/Array.js";
-import { expect } from "./matchalatte.js";
+import { expect } from "chai";
 
 describe("Array", () => {
   let array1 = ["c", "d", 1, 3];

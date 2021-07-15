@@ -1,5 +1,5 @@
 import "../src/String.js";
-import { expect } from "./matchalatte.js";
+import { expect } from "chai";
 
 describe("String", () => {
   describe("toTitleCase", () => {
