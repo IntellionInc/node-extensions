@@ -69,7 +69,7 @@ describe("Array", () => {
       });
     });
   });
-  describe.only("pluck", () => {
+  describe("pluck", () => {
     const keys = [
       { i: "value1-1", j: 1 },
       { i: "value1-2", j: 2 },
