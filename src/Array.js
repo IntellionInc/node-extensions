@@ -23,7 +23,7 @@ Object.defineProperties(Array.prototype, {
   },
   looselyEquals: {
     value: function(arr) {
-      return this.every((item, i), arr[i] === item)
+      return this.every((item, i) => arr[i] === item)
     }
   }
 });
