@@ -1,3 +1,18 @@
+const convertSpacesAndFirstLetters = (casing) => {
+  return function () {
+    return this.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+      if (/\s+/.test(match)) return "";
+      switch (casing) {
+        case "snake":
+          return index === 0 ? match : "_" + match;
+        case "camel":
+        default:
+          return index === 0 ? match.toLowerCase() : match.toUpperCase();
+      }
+    });
+  };
+};
+
 Object.defineProperties(String.prototype, {
   toTitleCase: {
     value: function () {
@@ -8,19 +23,9 @@ Object.defineProperties(String.prototype, {
     },
   },
   toCamelCase: {
-    value: function () {
-      return this.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
-        if (/\s+/.test(match)) return "";
-        return index === 0 ? match.toLowerCase() : match.toUpperCase();
-      });
-    },
+    value: convertSpacesAndFirstLetters("camel"),
   },
   toSnakeCase: {
-    value: function () {
-      return this.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
-        if (/\s+/.test(match)) return "";
-        return index === 0 ? match : "_" + match;
-      });      
-    }
-  }
+    value: convertSpacesAndFirstLetters("snake"),
+  },
 });
