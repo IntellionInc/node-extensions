@@ -1,5 +1,4 @@
-import "../src/String.js";
-import { expect } from "chai";
+import "../src/String.ts";
 
 describe("String", () => {
   describe("toTitleCase", () => {
@@ -27,7 +26,7 @@ describe("String", () => {
     ];
     it("should return the input in title case", () => {
       cases.forEach(({ input, result }) => {
-        expect(input.toTitleCase()).to.eq(result);
+        expect(input.toTitleCase()).toEqual(result);
       });
     });
   });
@@ -35,11 +34,11 @@ describe("String", () => {
     const cases = [
       {
         input: "alice_bob",
-        result: "alice_bob"
+        result: "alice_bob",
       },
       {
         input: "AliceBob",
-        result: "Alice_Bob"
+        result: "Alice_Bob",
       },
       {
         input: "Alice Bob",
@@ -47,12 +46,12 @@ describe("String", () => {
       },
       {
         input: "aliceBob carol",
-        result: "alice_Bob_carol"
-      }
+        result: "alice_Bob_carol",
+      },
     ];
     it("should return the input in snake case", () => {
       cases.forEach(({ input, result }) => {
-        expect(input.toSnakeCase()).to.eq(result);
+        expect(input.toSnakeCase()).toEqual(result);
       });
     });
   });
@@ -60,11 +59,11 @@ describe("String", () => {
     const cases = [
       {
         input: "AliceBob",
-        result: "AliceBob"
+        result: "AliceBob",
       },
       {
         input: "aliceBob",
-        result: "AliceBob"
+        result: "AliceBob",
       },
       {
         input: "Alice Bob",
@@ -72,12 +71,12 @@ describe("String", () => {
       },
       {
         input: "aliceBob carol",
-        result: "AliceBobCarol"
-      }
+        result: "AliceBobCarol",
+      },
     ];
     it("should return the input in snake case", () => {
       cases.forEach(({ input, result }) => {
-        expect(input.toPascalCase()).to.eq(result);
+        expect(input.toPascalCase()).toEqual(result);
       });
     });
   });
@@ -85,11 +84,11 @@ describe("String", () => {
     const cases = [
       {
         input: "aliceBob",
-        result: "aliceBob"
+        result: "aliceBob",
       },
       {
         input: "AliceBob",
-        result: "aliceBob"
+        result: "aliceBob",
       },
       {
         input: "Alice Bob",
@@ -97,12 +96,12 @@ describe("String", () => {
       },
       {
         input: "aliceBob carol",
-        result: "aliceBobCarol"
-      }
+        result: "aliceBobCarol",
+      },
     ];
     it("should return the input in title case", () => {
       cases.forEach(({ input, result }) => {
-        expect(input.toCamelCase()).to.eq(result);
+        expect(input.toCamelCase()).toEqual(result);
       });
     });
   });
