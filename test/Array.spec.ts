@@ -1,16 +1,5 @@
 import "../src/Array.ts";
 
-declare global{
-  interface Array<T> {
-    first: unknown,
-    last: unknown,
-    append(...args: Array<T>): Array<T> ,
-    removeLast(): Array<T>,
-    looselyEquals(arr: Array<T>): boolean,
-    pluck(key: string): Array<T> 
-  }  
-}
-
 describe("Array", () => {
   let array1 = ["c", "d", 1, 3]
 
@@ -80,19 +69,20 @@ describe("Array", () => {
     });
   });
   describe("pluck", () => {
-    const keys = [
+
+    const keys: PluckObject[] = [
       { i: "value1-1", j: 1 },
       { i: "value1-2", j: 2 },
       { i: "value1-3", j: 3 },
     ];
-    let arr = [
+    let arr: PluckObject[] = [
       { key1: keys[0], key2: { i: "value2-1" } },
       { key1: keys[1], key2: { i: "value2-2" } },
       { key1: keys[2], key2: { i: "value2-3" } },
     ];
     it("should create a new array from a deconstructed property", () => {
       let result = arr.pluck("key1");
-      result.forEach((key, i) => expect(key).toBe(keys[i]));
+      result.forEach((key, i: number) => expect(key).toBe(keys[i]));
     });
   });
 });

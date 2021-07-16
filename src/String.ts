@@ -1,3 +1,10 @@
+interface String {
+  toTitleCase(): string;
+  toSnakeCase(): string;
+  toPascalCase(): string;
+  toCamelCase(): string;
+}
+
 Object.defineProperties(String.prototype, {
   toTitleCase: {
     value: function () {

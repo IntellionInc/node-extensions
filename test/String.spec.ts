@@ -1,14 +1,5 @@
 import "../src/String.ts";
 
-declare global {
-  interface String {
-    toTitleCase(): string;
-    toSnakeCase(): string;
-    toPascalCase(): string;
-    toCamelCase(): string;
-  }
-}
-
 describe("String", () => {
   describe("toTitleCase", () => {
     const cases = [
