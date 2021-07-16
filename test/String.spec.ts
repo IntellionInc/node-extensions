@@ -1,5 +1,4 @@
 import "../src/String.ts";
-import { expect } from "chai";
 
 declare global {
   interface String {
@@ -36,7 +35,7 @@ describe("String", () => {
     ];
     it("should return the input in title case", () => {
       cases.forEach(({ input, result }) => {
-        expect(input.toTitleCase()).to.eq(result);
+        expect(input.toTitleCase()).toEqual(result);
       });
     });
   });
@@ -61,7 +60,7 @@ describe("String", () => {
     ];
     it("should return the input in snake case", () => {
       cases.forEach(({ input, result }) => {
-        expect(input.toSnakeCase()).to.eq(result);
+        expect(input.toSnakeCase()).toEqual(result);
       });
     });
   });
@@ -86,7 +85,7 @@ describe("String", () => {
     ];
     it("should return the input in snake case", () => {
       cases.forEach(({ input, result }) => {
-        expect(input.toPascalCase()).to.eq(result);
+        expect(input.toPascalCase()).toEqual(result);
       });
     });
   });
@@ -111,7 +110,7 @@ describe("String", () => {
     ];
     it("should return the input in title case", () => {
       cases.forEach(({ input, result }) => {
-        expect(input.toCamelCase()).to.eq(result);
+        expect(input.toCamelCase()).toEqual(result);
       });
     });
   });
