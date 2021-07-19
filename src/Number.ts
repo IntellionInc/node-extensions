@@ -1,22 +1,73 @@
 declare global {
   interface Number {
+    /**
+     * Gets the value converted from seconds to milliseconds.
+     */
     seconds: number;
+    /**
+     * Gets the value converted from minutes to milliseconds.
+     */
     minutes: number;
+    /**
+     * Gets the value converted from hours to milliseconds.
+     */
     hours: number;
+    /**
+     * Gets the value converted from days to milliseconds.
+     */
     days: number;
+    /**
+     * Gets the value converted from months to milliseconds.
+     */
     months: number;
+    /**
+     * Gets the value converted from years to milliseconds.
+     */
     years: number;
 
+    /**
+     * Gets the value converted from millieseconds to years.
+     */
     inYears: number;
+    /**
+     * Gets the value converted from millieseconds to months.
+     */
     inMonths: number;
+    /**
+     * Gets the value converted from millieseconds to days.
+     */
     inDays: number;
+    /**
+     * Gets the value converted from millieseconds to hours.
+     */
     inHours: number;
+    /**
+     * Gets the value converted from millieseconds to minutes.
+     */
     inMinutes: number;
+    /**
+     * Gets the value converted from millieseconds to seconds.
+     */
     inSeconds: number;
 
+    /**
+     * Adds the given value to current Date and returns a new Date object depicting a future time.
+     */
     fromNow(): Date;
+    /**
+     * Subtracts the given value from current Date and returns a new Date object depicting a past time.
+     */
+
     beforeNow(): Date;
+    /**
+     * Adds the given value to the given date and returnds a new Date object depicting a future time.
+     * @param date Date to be manipulated.
+     */
     from(date: Date): Date;
+    /**
+     * Subtracts the given value from current Date and returns a new Date object depicting a past time.
+     * @param date Date to be manipulated.
+     */
     before(date: Date): Date;
   }
 }
