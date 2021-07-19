@@ -1,2 +1,3 @@
-export * from "./src/Array.ts";
-export * from "./src/String.ts";
+export * from "./src/Array";
+export * from "./src/String";
+export * from "./src/Number";

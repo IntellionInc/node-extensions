@@ -12,8 +12,12 @@ jobs:
           keys:
             - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
       - run:
-          name: install packages
-          command: npm ci
+        name: install packages
+        command: npm ci
+      - run:
+        name: build
+        command: npm run build
+
       - save_cache:
           key: node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
           paths:
@@ -35,8 +39,7 @@ jobs:
           when: always
       - run:
           name: Send coverage report to Code Climate
-          command:
-              ./cc-test-reporter after-build -t lcov
+          command: ./cc-test-reporter after-build -t lcov
           when: always
       - store_artifacts:
           path: ./coverage/lcov.info

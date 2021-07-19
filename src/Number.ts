@@ -1,22 +1,24 @@
-interface Number {
-  seconds: number;
-  minutes: number;
-  hours: number;
-  days: number;
-  months: number;
-  years: number;
+declare global {
+  interface Number {
+    seconds: number;
+    minutes: number;
+    hours: number;
+    days: number;
+    months: number;
+    years: number;
 
-  inYears: number;
-  inMonths: number;
-  inDays: number;
-  inHours: number;
-  inMinutes: number;
-  inSeconds: number;
+    inYears: number;
+    inMonths: number;
+    inDays: number;
+    inHours: number;
+    inMinutes: number;
+    inSeconds: number;
 
-  fromNow(): Date;
-  beforeNow(): Date;
-  from(date: Date): Date;
-  before(date: Date): Date;
+    fromNow(): Date;
+    beforeNow(): Date;
+    from(date: Date): Date;
+    before(date: Date): Date;
+  }
 }
 
 Object.defineProperties(Number.prototype, {
@@ -28,31 +30,31 @@ Object.defineProperties(Number.prototype, {
   },
   minutes: {
     get: function () {
-      const a = 60;
+      let a = 60;
       return this * a.seconds;
     },
   },
   hours: {
     get: function () {
-      const a = 60;
+      let a = 60;
       return this * a.minutes;
     },
   },
   days: {
     get: function () {
-      const a = 24;
+      let a = 24;
       return this * a.hours;
     },
   },
   months: {
     get: function () {
-      const a = 30;
+      let a = 30;
       return this * a.days;
     },
   },
   years: {
     get: function () {
-      const a = 365;
+      let a = 365;
       return this * a.days;
     },
   },
@@ -60,37 +62,37 @@ Object.defineProperties(Number.prototype, {
   // Time conversions from milliseconds
   inYears: {
     get: function () {
-      const a = 1;
+      let a = 1;
       return this / a.years;
     },
   },
   inMonths: {
     get: function () {
-      const a = 1;
+      let a = 1;
       return this / a.months;
     },
   },
   inDays: {
     get: function () {
-      const a = 1;
+      let a = 1;
       return this / a.days;
     },
   },
   inHours: {
     get: function () {
-      const a = 1;
+      let a = 1;
       return this / a.hours;
     },
   },
   inMinutes: {
     get: function () {
-      const a = 1;
+      let a = 1;
       return this / a.minutes;
     },
   },
   inSeconds: {
     get: function () {
-      const a = 1;
+      let a = 1;
       return this / a.seconds;
     },
   },
@@ -121,3 +123,5 @@ Object.defineProperties(Number.prototype, {
     },
   },
 });
+
+export default Number.prototype;

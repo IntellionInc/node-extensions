@@ -1,4 +1,3 @@
-import { isContext } from "vm";
 import "../src/Number.ts";
 
 describe("Number", () => {

@@ -1,13 +1,17 @@
-interface Array<T> {
-  first: T,
-  last: T,
-  append(...args: any[]): any[] ,
-  removeLast(): T[],
-  looselyEquals(arr: any[]): boolean,
-  pluck(key: string): any[] 
-}  
-interface PluckObject {
-  [key: string]: any
+declare global {
+  interface Array<T> {
+    first: T;
+    last: T;
+    append(...args: any[]): any[];
+    removeLast(): T[];
+    looselyEquals(arr: any[]): boolean;
+    pluck(key: string): any[];
+  }
+}
+declare global {
+  interface PluckObject {
+    [key: string]: any;
+  }
 }
 
 Object.defineProperties(Array.prototype, {
@@ -44,3 +48,5 @@ Object.defineProperties(Array.prototype, {
     },
   },
 });
+
+export default Array.prototype;
