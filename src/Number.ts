@@ -95,29 +95,29 @@ Object.defineProperties(Number.prototype, {
     },
   },
 
-    // Date Operations
+  // Date Operations
   fromNow: {
     value: function () {
-    const result = Date.now() + this;
-    return new Date(result);      
+      const result = Date.now() + this;
+      return new Date(result);
     },
   },
   beforeNow: {
     value: function () {
-    const result = Date.now() - this;
-    return new Date(result);      
+      const result = Date.now() - this;
+      return new Date(result);
     },
   },
   from: {
     value: function (date: Date) {
-    const result = date.getTime() + this;
-    return new Date(result);      
+      const result = date.getTime() + this;
+      return new Date(result);
     },
   },
   before: {
     value: function (date: Date) {
-    const result = date.getTime() - this;
-    return new Date(result);      
+      const result = date.getTime() - this;
+      return new Date(result);
     },
   },
 });
