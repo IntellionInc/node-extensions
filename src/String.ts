@@ -1,8 +1,20 @@
 declare global {
   interface String {
+    /**
+     * Converts given string to Title Case.
+     */
     toTitleCase(): string;
+    /**
+     * Converts given string to snake_case.
+     */
     toSnakeCase(): string;
+    /**
+     * Converts given string to PascalCase.
+     */
     toPascalCase(): string;
+    /**
+     * Converts given string to camelCase.
+     */
     toCamelCase(): string;
   }
 }
