@@ -111,7 +111,7 @@ describe("Number", () => {
     describe("beforeNow", () => {
       let input = 5000;
       let output = new Date(1609459200000 - 5000);
-      it("should return a date object depicting 'input' milliseconds ago", () => {
+      it("should return a date object depicting 'input' milliseconds before now", () => {
         expect(input.beforeNow()).toStrictEqual(output);
       });
     });
@@ -119,7 +119,7 @@ describe("Number", () => {
       let input = 5000;
       let args = new Date(1600000000000);
       let output = new Date(1600000000000 + 5000);
-      it("should return a date object depicting 'input' milliseconds ago", () => {
+      it("should return a date object depicting 'input' milliseconds from the given date", () => {
         expect(input.from(args)).toStrictEqual(output);
       });
     });
@@ -127,7 +127,7 @@ describe("Number", () => {
       let input = 5000;
       let args = new Date(1600000000000);
       let output = new Date(1600000000000 - 5000);
-      it("should return a date object depicting 'input' milliseconds ago", () => {
+      it("should return a date object depicting 'input' milliseconds before the given date", () => {
         expect(input.before(args)).toStrictEqual(output);
       });
     });
