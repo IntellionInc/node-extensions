@@ -1,11 +1,11 @@
 declare global {
   interface Array<T> {
     /**
-     * Gets the first element of the array.
+     * Gets or sets the first element of the array.
      */
     first: T;
     /**
-     * Gets the last element of the array.
+     * Gets or sets the last element of the array.
      */
     last: T;
     /**
@@ -40,10 +40,16 @@ Object.defineProperties(Array.prototype, {
     get: function () {
       return this[0];
     },
+    set: function (val) {
+      this[0] = val;
+    },
   },
   last: {
     get: function () {
       return this[this.length - 1];
+    },
+    set: function (val) {
+      this[this.length - 1] = val;
     },
   },
   append: {

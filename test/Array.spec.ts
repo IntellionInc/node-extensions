@@ -1,16 +1,34 @@
 import "../src/Array.ts";
 
 describe("Array", () => {
-  let array1 = ["c", "d", 1, 3]
+  let array1 = ["c", "d", 1, 3];
 
   describe("first", () => {
-    it("should return the first item in an array", () => {
-      expect(array1.first).toBe("c");
+    describe("getter", () => {
+      it("should return the first item in an array", () => {
+        expect(array1.first).toBe("c");
+      });
+    });
+    describe("setter", () => {
+      let val = "a";
+      it("should set the first item in an array to given value", () => {
+        array1.first = val;
+        expect(array1.first).toBe(val);
+      });
     });
   });
   describe("last", () => {
-    it("should return the last item of array", () => {
-      expect(array1.last).toBe(3);
+    describe("getter", () => {
+      it("should return the last item of array", () => {
+        expect(array1.last).toBe(3);
+      });
+    });
+    describe("setter", () => {
+      let val = "a";
+      it("should set the last item in an array to given value", () => {
+        array1.last = val;
+        expect(array1.last).toBe(val);
+      });
     });
   });
   describe("append", () => {
@@ -69,7 +87,6 @@ describe("Array", () => {
     });
   });
   describe("pluck", () => {
-
     const keys: PluckObject[] = [
       { i: "value1-1", j: 1 },
       { i: "value1-2", j: 2 },
