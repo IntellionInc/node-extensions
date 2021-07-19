@@ -12,6 +12,11 @@ interface Number {
   inHours(): number;
   inMinutes(): number;
   inSeconds(): number;
+
+  fromNow(): Date;
+  beforeNow(): Date;
+  from(date: Date): Date;
+  before(date: Date): Date;
 }
 
 Object.defineProperties(Number.prototype, {
@@ -50,7 +55,7 @@ Object.defineProperties(Number.prototype, {
       return this * a.days;
     },
   },
-  
+
   inYears: {
     value: function () {
       const a = 1;
@@ -85,6 +90,31 @@ Object.defineProperties(Number.prototype, {
     value: function () {
       const a = 1;
       return this / a.seconds;
+    },
+  },
+
+  fromNow: {
+    value: function () {
+    const result = Date.now() + this;
+    return new Date(result);      
+    },
+  },
+  beforeNow: {
+    value: function () {
+    const result = Date.now() - this;
+    return new Date(result);      
+    },
+  },
+  from: {
+    value: function (date: Date) {
+    const result = date.getTime() + this;
+    return new Date(result);      
+    },
+  },
+  before: {
+    value: function (date: Date) {
+    const result = date.getTime() - this;
+    return new Date(result);      
     },
   },
 });
