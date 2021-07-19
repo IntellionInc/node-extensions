@@ -6,12 +6,12 @@ interface Number {
   months: number;
   years: number;
 
-  inYears(): number;
-  inMonths(): number;
-  inDays(): number;
-  inHours(): number;
-  inMinutes(): number;
-  inSeconds(): number;
+  inYears: number;
+  inMonths: number;
+  inDays: number;
+  inHours: number;
+  inMinutes: number;
+  inSeconds: number;
 
   fromNow(): Date;
   beforeNow(): Date;
@@ -20,6 +20,7 @@ interface Number {
 }
 
 Object.defineProperties(Number.prototype, {
+  // Time conversions to milliseconds
   seconds: {
     get: function () {
       return this * 1000;
@@ -56,43 +57,45 @@ Object.defineProperties(Number.prototype, {
     },
   },
 
+  // Time conversions from milliseconds
   inYears: {
-    value: function () {
+    get: function () {
       const a = 1;
       return this / a.years;
     },
   },
   inMonths: {
-    value: function () {
+    get: function () {
       const a = 1;
       return this / a.months;
     },
   },
   inDays: {
-    value: function () {
+    get: function () {
       const a = 1;
       return this / a.days;
     },
   },
   inHours: {
-    value: function () {
+    get: function () {
       const a = 1;
       return this / a.hours;
     },
   },
   inMinutes: {
-    value: function () {
+    get: function () {
       const a = 1;
       return this / a.minutes;
     },
   },
   inSeconds: {
-    value: function () {
+    get: function () {
       const a = 1;
       return this / a.seconds;
     },
   },
 
+    // Date Operations
   fromNow: {
     value: function () {
     const result = Date.now() + this;
