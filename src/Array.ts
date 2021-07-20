@@ -9,7 +9,7 @@ declare global {
      */
     last: T;
     /**
-     * Appends new elements to the enf of an array, and returns the array.
+     * Appends new elements to the end of an array, and returns the array.
      * @param args New elements to add to the array.
      */
     append(...args: any[]): any[];
@@ -23,7 +23,7 @@ declare global {
      */
     looselyEquals(arr: any[]): boolean;
     /**
-     * Deconstructs a specific property fro man array of objects, and returns a new array consisting of these properties.
+     * Deconstructs a specific property from an array of objects, and returns a new array consisting of these properties.
      * @param key Name of the property to be plucked.
      */
     pluck(key: string): any[];
