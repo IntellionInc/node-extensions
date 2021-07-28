@@ -11,7 +11,7 @@
 		"test": "jest",
 		"test:dev": "jest --watch",
 		"cover": "jest --collect-coverage",
-		"prepare": "husky install",
+		"prepare": "husky install && npx husky-init",
 		"pre-commit": "npm run build && npm test && lint-staged"
 	},
 	"lint-staged": {
