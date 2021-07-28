@@ -92,12 +92,12 @@ describe("Number", () => {
   });
 
   describe("Date operations", () => {
-    let nowSpy: jest.SpyInstance;
     beforeEach(() => {
-      nowSpy = jest.spyOn(Date, "now").mockImplementation(() => 1609459200000); // 2021-01-01
+      jest.useFakeTimers();
+      jest.setSystemTime(new Date(1609459200000)) // 2021-01-01
     });
     afterEach(() => {
-      nowSpy.mockRestore();
+      jest.useRealTimers();
     });
 
     describe("fromNow", () => {
