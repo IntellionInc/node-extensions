@@ -2,7 +2,7 @@
 	"printWidth": 90,
 	"useTabs": true,
 	"tabWidth": 2,
-	"arrowParens": "always",
+	"arrowParens": "avoid",
 	"singleQuote": false,
 	"semi": true,
 	"trailingComma": "none",
