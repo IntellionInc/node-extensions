@@ -81,70 +81,58 @@ Object.defineProperties(Number.prototype, {
 	},
 	minutes: {
 		get: function () {
-			const a = 60;
-			return this * a.seconds;
+			return this * (60).seconds;
 		}
 	},
 	hours: {
 		get: function () {
-			const a = 60;
-			return this * a.minutes;
+			return this * (60).minutes;
 		}
 	},
 	days: {
 		get: function () {
-			const a = 24;
-			return this * a.hours;
+			return this * (24).hours;
 		}
 	},
 	months: {
 		get: function () {
-			const a = 30;
-			return this * a.days;
+			return this * (30).days;
 		}
 	},
 	years: {
 		get: function () {
-			const a = 365;
-			return this * a.days;
+			return this * (365).days;
 		}
 	},
-
 	// Time conversions from milliseconds
 	inYears: {
 		get: function () {
-			const a = 1;
-			return this / a.years;
+			return this / (1).years;
 		}
 	},
 	inMonths: {
 		get: function () {
-			const a = 1;
-			return this / a.months;
+			return this / (1).months;
 		}
 	},
 	inDays: {
 		get: function () {
-			const a = 1;
-			return this / a.days;
+			return this / (1).days;
 		}
 	},
 	inHours: {
 		get: function () {
-			const a = 1;
-			return this / a.hours;
+			return this / (1).hours;
 		}
 	},
 	inMinutes: {
 		get: function () {
-			const a = 1;
-			return this / a.minutes;
+			return this / (1).minutes;
 		}
 	},
 	inSeconds: {
 		get: function () {
-			const a = 1;
-			return this / a.seconds;
+			return this / (1).seconds;
 		}
 	},
 
