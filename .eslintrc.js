@@ -41,6 +41,7 @@ module.exports = {
 			}
 		],
 		quotes: ["error", "double"],
-		"no-console": "off"
+		"no-console": "off",
+		"arrow-parens": ["error", "as-needed"]
 	}
 };
