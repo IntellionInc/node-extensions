@@ -130,5 +130,12 @@ describe("Number", () => {
 				expect(input.before(args)).toStrictEqual(output);
 			});
 		});
+		describe("toDate", () => {
+			const input = 1000000000000;
+			const output = new Date(1000000000000);
+			it("should return a date object", () => {
+				expect(input.toDate()).toEqual(output);
+			});
+		});
 	});
 });

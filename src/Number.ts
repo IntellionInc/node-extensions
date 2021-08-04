@@ -69,6 +69,10 @@ declare global {
 		 * @param date Date to be manipulated.
 		 */
 		before(date: Date): Date;
+		/**
+		 * Converts Number into a Date object and returns that object.
+		 */
+		toDate(): Date;
 	}
 }
 
@@ -159,6 +163,11 @@ Object.defineProperties(Number.prototype, {
 		value: function (date: Date) {
 			const result = date.getTime() - this;
 			return new Date(result);
+		}
+	},
+	toDate: {
+		value: function () {
+			return new Date(this);
 		}
 	}
 });
