@@ -19,7 +19,7 @@ declare global {
 		/**
 		 * Converts given string to a Number object.
 		 */
-		toNumber(): number;
+		toDate(): Date;
 	}
 }
 
@@ -56,9 +56,9 @@ Object.defineProperties(String.prototype, {
 			});
 		}
 	},
-	toNumber: {
+	toDate: {
 		value: function () {
-			return new Date(Number(this));
+			return new Date(this);
 		}
 	}
 });

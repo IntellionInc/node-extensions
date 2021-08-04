@@ -106,8 +106,10 @@ describe("String", () => {
 		});
 	});
 	describe("toDate", () => {
-		const input = "1609459200000"; // 2021-01-01
-		const output = new Date(1609459200000);
-		expect(input.toNumber()).toEqual(output);
+		const day = "2021-01-01";
+		const time = "T00:30:00";
+		const date = day + time;
+		const output = new Date("2021-01-01T00:30:00");
+		expect(date.toDate()).toEqual(output);
 	});
 });
