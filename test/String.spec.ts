@@ -108,8 +108,21 @@ describe("String", () => {
 	describe("toDate", () => {
 		const day = "2021-01-01";
 		const time = "T00:30:00";
-		const date = day + time;
-		const output = new Date("2021-01-01T00:30:00");
-		expect(date.toDate()).toEqual(output);
+
+		describe("when called with day input", () => {
+			const input = day;
+			const output = new Date("2021-01-01");
+			it("should return appropriate date object", () => {
+				expect(input.toDate()).toEqual(output);
+			});
+		});
+
+		describe("when called with day and time input", () => {
+			const input = day + time;
+			const output = new Date("2021-01-01T00:30:00");
+			it("should return appropriate date object", () => {
+				expect(input.toDate()).toEqual(output);
+			});
+		});
 	});
 });
