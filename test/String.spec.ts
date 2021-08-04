@@ -105,4 +105,9 @@ describe("String", () => {
 			});
 		});
 	});
+	describe("toDate", () => {
+		const input = "1609459200000"; // 2021-01-01
+		const output = new Date(1609459200000);
+		expect(input.toNumber()).toEqual(output);
+	});
 });

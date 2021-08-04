@@ -16,6 +16,10 @@ declare global {
 		 * Converts given string to camelCase.
 		 */
 		toCamelCase(): string;
+		/**
+		 * Converts given string to a Number object.
+		 */
+		toNumber(): number;
 	}
 }
 
@@ -50,6 +54,11 @@ Object.defineProperties(String.prototype, {
 				if (/\s+/.test(match)) return "";
 				return index === 0 ? match.toLowerCase() : match.toUpperCase();
 			});
+		}
+	},
+	toNumber: {
+		value: function () {
+			return new Date(Number(this));
 		}
 	}
 });
