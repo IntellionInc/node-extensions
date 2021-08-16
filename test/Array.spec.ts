@@ -102,4 +102,29 @@ describe("Array", () => {
 			result.forEach((key, i: number) => expect(key).toBe(keys[i]));
 		});
 	});
+	describe("asyncForEach", () => {
+		const arr = [0, 1];
+		let mockAsync: jest.Mock;
+		let mockCb: jest.Mock;
+		let mockResolve: jest.Mock;
+		beforeEach(() => {
+			mockResolve = jest.fn();
+			mockCb = jest
+				.fn()
+				.mockResolvedValueOnce("some-value-1")
+				.mockResolvedValueOnce("some-value-2");
+			mockAsync = jest.fn().mockImplementation(async () => {
+				mockResolve(await mockCb());
+			});
+		});
+
+		it("should call async callbacks for each item in the array", async () => {
+			await arr.asyncForEach(mockAsync);
+			expect(mockAsync).toHaveBeenNthCalledWith(1, 0);
+			expect(mockAsync).toHaveBeenNthCalledWith(2, 1);
+			expect(mockResolve).toHaveBeenNthCalledWith(1, "some-value-1");
+			expect(mockResolve).toHaveBeenNthCalledWith(2, "some-value-2");
+			expect(mockCb).toBeCalledTimes(2);
+		});
+	});
 });
