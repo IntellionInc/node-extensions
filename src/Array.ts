@@ -31,6 +31,10 @@ declare global {
 		 * Asynchronous forEach method.
 		 */
 		asyncForEach(callback: any): Promise<any>;
+		/**
+		 * Creates and returns an array with a stepsize
+		 */
+		range(stepSize: number | undefined): T[];
 	}
 }
 declare global {
@@ -83,6 +87,27 @@ Object.defineProperties(Array.prototype, {
 			for (let i = 0; i <= this.length - 1; i++) {
 				await callback(this[i]);
 			}
+		}
+	},
+	range: {
+		value: function (stepSize: number | undefined) {
+			const result = [];
+			const step = stepSize || 1;
+
+			let temp = this.first;
+			if (this.first > this.last) {
+				while (temp >= this.last) {
+					result.push(temp);
+					temp = temp - step;
+				}
+			} else if (this.first < this.last) {
+				while (temp <= this.last) {
+					result.push(temp);
+					temp = temp + step;
+				}
+			}
+
+			return result;
 		}
 	}
 });
