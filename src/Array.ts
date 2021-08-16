@@ -27,6 +27,10 @@ declare global {
 		 * @param key Name of the property to be plucked.
 		 */
 		pluck(key: string): any[];
+		/**
+		 * Asynchronous forEach method.
+		 */
+		asyncForEach(callback: any): Promise<any>;
 	}
 }
 declare global {
@@ -72,6 +76,13 @@ Object.defineProperties(Array.prototype, {
 	pluck: {
 		value: function (key: string) {
 			return this.map((item: PluckObject) => item[key]);
+		}
+	},
+	asyncForEach: {
+		value: async function (callback: any) {
+			for (let i = 0; i <= this.length - 1; i++) {
+				await callback(this[i]);
+			}
 		}
 	}
 });
