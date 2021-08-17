@@ -92,21 +92,15 @@ Object.defineProperties(Array.prototype, {
 		}
 	},
 	range: {
-		value: function (stepSize = 1) {
-			const result = [];
-
-			if (this.first !== this.last) {
-				const step = stepSize;
-				let stepDirection = 1;
-				let tempArrayElement = this.first;
-				stepDirection = Math.sign(this.last - this.first);
-				while (stepDirection * tempArrayElement <= stepDirection * this.last) {
-					result.push(tempArrayElement);
-					tempArrayElement = tempArrayElement + stepDirection * step;
-				}
-			}
-
-			return result;
+		value: function (stepSize?: number) {
+			const step = stepSize || 1;
+			const range = [],
+				start = Math.min(this[0]),
+				end = Math.min(this[1]),
+				sign = () => (end - start) / Math.abs(end - start),
+				increment = (x: number) => x + Math.abs(step) * sign();
+			for (let i = start; i * sign() <= end * sign(); i = increment(i)) range.push(i);
+			return range;
 		}
 	}
 });
