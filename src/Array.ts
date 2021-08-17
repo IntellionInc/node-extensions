@@ -29,12 +29,14 @@ declare global {
 		pluck(key: string): any[];
 		/**
 		 * Asynchronous forEach method.
+		 * @param callback Async function as input.
 		 */
 		asyncForEach(callback: any): Promise<any>;
 		/**
 		 * Creates and returns an array with a stepsize
+		 * @param stepSize Stepsize to create a new array.
 		 */
-		range(stepSize: number | undefined): T[];
+		range(stepSize?: number): T[];
 	}
 }
 declare global {
@@ -90,20 +92,17 @@ Object.defineProperties(Array.prototype, {
 		}
 	},
 	range: {
-		value: function (stepSize: number | undefined) {
+		value: function (stepSize = 1) {
 			const result = [];
-			const step = stepSize || 1;
 
-			let temp = this.first;
-			if (this.first > this.last) {
-				while (temp >= this.last) {
-					result.push(temp);
-					temp = temp - step;
-				}
-			} else if (this.first < this.last) {
-				while (temp <= this.last) {
-					result.push(temp);
-					temp = temp + step;
+			if (this.first !== this.last) {
+				const step = stepSize;
+				let stepDirection = 1;
+				let tempArrayElement = this.first;
+				stepDirection = Math.sign(this.last - this.first);
+				while (stepDirection * tempArrayElement <= stepDirection * this.last) {
+					result.push(tempArrayElement);
+					tempArrayElement = tempArrayElement + stepDirection * step;
 				}
 			}
 
