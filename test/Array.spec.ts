@@ -129,39 +129,65 @@ describe("Array", () => {
 	});
 
 	describe("range", () => {
-		[
-			{
-				array: [1, 10],
-				result: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-			},
-			{
-				array: [10, 5],
-				result: [10, 9, 8, 7, 6, 5]
-			},
-			{
-				array: [2, -3],
-				result: [2, 1, 0, -1, -2, -3]
-			},
-			{
-				array: [-2, 3],
-				result: [-2, -1, 0, 1, 2, 3]
-			},
-			{
-				array: [5, 5],
-				result: []
-			},
-			{
-				array: [0, 0],
-				result: []
-			},
-			{
-				array: [1, 10],
-				result: [1, 3, 5, 7, 9],
-				stepSize: 2
-			}
-		].forEach(({ array, result, stepSize }) => {
+		describe("when the stepsize is not given", () => {
+			it("should create and return a new array using default stepSize", () => {
+				[
+					{
+						array: [1, 10],
+						result: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+					},
+					{
+						array: [10, 5],
+						result: [10, 9, 8, 7, 6, 5]
+					},
+					{
+						array: [2, -3],
+						result: [2, 1, 0, -1, -2, -3]
+					},
+					{
+						array: [-2, 3],
+						result: [-2, -1, 0, 1, 2, 3]
+					},
+					{
+						array: [5, 5],
+						result: []
+					},
+					{
+						array: [0, 0],
+						result: []
+					}
+				].forEach(({ array, result }) => {
+					expect(array.range()).toEqual(result);
+				});
+			});
+		});
+
+		describe("when the stepsize is given", () => {
 			it("should create and return a new array using stepSize", () => {
-				expect(array.range(stepSize)).toEqual(result);
+				[
+					{
+						array: [1, 10],
+						result: [1, 6],
+						stepSize: 5
+					},
+					{
+						array: [2, 18],
+						result: [2, 10, 18],
+						stepSize: 8
+					},
+					{
+						array: [10, 5],
+						result: [10, 8, 6],
+						stepSize: 2
+					},
+					{
+						array: [1, 10],
+						result: [1, 3, 5, 7, 9],
+						stepSize: 2
+					}
+				].forEach(({ array, result, stepSize }) => {
+					expect(array.range(stepSize)).toEqual(result);
+				});
 			});
 		});
 	});
