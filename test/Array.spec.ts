@@ -173,7 +173,7 @@ describe("Array", () => {
 					{
 						array: [2, 18],
 						result: [2, 10, 18],
-						stepSize: 8
+						stepSize: -8
 					},
 					{
 						array: [10, 5],
@@ -183,7 +183,26 @@ describe("Array", () => {
 					{
 						array: [1, 10],
 						result: [1, 3, 5, 7, 9],
-						stepSize: 2
+						stepSize: -2
+					}
+				].forEach(({ array, result, stepSize }) => {
+					expect(array.range(stepSize)).toEqual(result);
+				});
+			});
+		});
+
+		describe("when the stepsize is 0", () => {
+			it("should create and return a new array using default stepSize", () => {
+				[
+					{
+						array: [10, 6],
+						result: [10, 9, 8, 7, 6],
+						stepSize: 0
+					},
+					{
+						array: [1, 5],
+						result: [1, 2, 3, 4, 5],
+						stepSize: 0
 					}
 				].forEach(({ array, result, stepSize }) => {
 					expect(array.range(stepSize)).toEqual(result);
