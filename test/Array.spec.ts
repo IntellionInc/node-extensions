@@ -102,4 +102,112 @@ describe("Array", () => {
 			result.forEach((key, i: number) => expect(key).toBe(keys[i]));
 		});
 	});
+	describe("asyncForEach", () => {
+		const arr = [0, 1];
+		let mockAsync: jest.Mock;
+		let mockCb: jest.Mock;
+		let mockResolve: jest.Mock;
+		beforeEach(() => {
+			mockResolve = jest.fn();
+			mockCb = jest
+				.fn()
+				.mockResolvedValueOnce("some-value-1")
+				.mockResolvedValueOnce("some-value-2");
+			mockAsync = jest.fn().mockImplementation(async () => {
+				mockResolve(await mockCb());
+			});
+		});
+
+		it("should call async callbacks for each item in the array", async () => {
+			await arr.asyncForEach(mockAsync);
+			expect(mockAsync).toHaveBeenNthCalledWith(1, 0);
+			expect(mockAsync).toHaveBeenNthCalledWith(2, 1);
+			expect(mockResolve).toHaveBeenNthCalledWith(1, "some-value-1");
+			expect(mockResolve).toHaveBeenNthCalledWith(2, "some-value-2");
+			expect(mockCb).toBeCalledTimes(2);
+		});
+	});
+
+	describe("range", () => {
+		describe("when the stepsize is not given", () => {
+			it("should create and return a new array using default stepSize", () => {
+				[
+					{
+						array: [1, 10],
+						result: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+					},
+					{
+						array: [10, 5],
+						result: [10, 9, 8, 7, 6, 5]
+					},
+					{
+						array: [2, -3],
+						result: [2, 1, 0, -1, -2, -3]
+					},
+					{
+						array: [-2, 3],
+						result: [-2, -1, 0, 1, 2, 3]
+					},
+					{
+						array: [5, 5],
+						result: []
+					},
+					{
+						array: [0, 0],
+						result: []
+					}
+				].forEach(({ array, result }) => {
+					expect(array.range()).toEqual(result);
+				});
+			});
+		});
+
+		describe("when the stepsize is given", () => {
+			it("should create and return a new array using stepSize", () => {
+				[
+					{
+						array: [1, 10],
+						result: [1, 6],
+						stepSize: 5
+					},
+					{
+						array: [2, 18],
+						result: [2, 10, 18],
+						stepSize: -8
+					},
+					{
+						array: [10, 5],
+						result: [10, 8, 6],
+						stepSize: 2
+					},
+					{
+						array: [1, 10],
+						result: [1, 3, 5, 7, 9],
+						stepSize: -2
+					}
+				].forEach(({ array, result, stepSize }) => {
+					expect(array.range(stepSize)).toEqual(result);
+				});
+			});
+		});
+
+		describe("when the stepsize is 0", () => {
+			it("should create and return a new array using default stepSize", () => {
+				[
+					{
+						array: [10, 6],
+						result: [10, 9, 8, 7, 6],
+						stepSize: 0
+					},
+					{
+						array: [1, 5],
+						result: [1, 2, 3, 4, 5],
+						stepSize: 0
+					}
+				].forEach(({ array, result, stepSize }) => {
+					expect(array.range(stepSize)).toEqual(result);
+				});
+			});
+		});
+	});
 });

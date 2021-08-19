@@ -27,6 +27,16 @@ declare global {
 		 * @param key Name of the property to be plucked.
 		 */
 		pluck(key: string): any[];
+		/**
+		 * Asynchronous forEach method.
+		 * @param callback Async function as input.
+		 */
+		asyncForEach(callback: any): Promise<any>;
+		/**
+		 * Creates and returns an array with a stepsize
+		 * @param stepSize Stepsize to create a new array.
+		 */
+		range(stepSize?: number): T[];
 	}
 }
 declare global {
@@ -72,6 +82,25 @@ Object.defineProperties(Array.prototype, {
 	pluck: {
 		value: function (key: string) {
 			return this.map((item: PluckObject) => item[key]);
+		}
+	},
+	asyncForEach: {
+		value: async function (callback: any) {
+			for (let i = 0; i <= this.length - 1; i++) {
+				await callback(this[i]);
+			}
+		}
+	},
+	range: {
+		value: function (stepSize?: number) {
+			const step = stepSize || 1;
+			const range = [],
+				start = Math.min(this[0]),
+				end = Math.min(this[1]),
+				sign = () => (end - start) / Math.abs(end - start),
+				increment = (x: number) => x + Math.abs(step) * sign();
+			for (let i = start; i * sign() <= end * sign(); i = increment(i)) range.push(i);
+			return range;
 		}
 	}
 });
