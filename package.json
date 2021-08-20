@@ -11,7 +11,7 @@
 		"test": "jest",
 		"test:dev": "jest --watch",
 		"test:cov": "jest --coverage",
-		"test: ci": "jest --maxWorkers=2",
+		"test:ci": "jest --maxWorkers=2",
 		"test:cov:ci": "jest --coverage --maxWorkers=2",
 		"prepare": "husky install && npx husky-init",
 		"pre-commit": "npm run build && npm test && lint-staged"
