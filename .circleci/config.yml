@@ -24,10 +24,10 @@ jobs:
             - ~/.npm
       - run:
           name: Run Tests
-          command: npm run test
+          command: npm run test:ci
       - run:
           name: Run coverage
-          command: npm run cover
+          command: npm run test:cov:ci
           when: always
       - run:
           name: Setup Code Climate test-reporter
