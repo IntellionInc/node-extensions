@@ -23,7 +23,7 @@ module.exports = {
 		jest: true,
 		es6: true
 	},
-	ignorePatterns: [".eslintrc.js"],
+	ignorePatterns: [".eslintrc.js", "jest.config.ts"],
 	rules: {
 		"prettier/prettier": "error",
 		"eslint-comments/no-unused-disable": "error",
