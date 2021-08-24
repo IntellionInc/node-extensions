@@ -13,8 +13,10 @@
 		"test:cov": "jest --coverage",
 		"test:ci": "jest --maxWorkers=2",
 		"test:cov:ci": "jest --coverage --maxWorkers=2",
-		"prepare": "husky install && npx husky-init",
-		"pre-commit": "npm run build && npm test && lint-staged"
+		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest",
+		"test:e2e": "jest --config ./test/jest-e2e.json",
+		"prepare": "rimraf .husky && husky install && npx husky add .husky/pre-commit \"npm run pre-commit\"",
+		"pre-commit": "npm run build && lint-staged"
 	},
 	"lint-staged": {
 		"*.+(js|ts)": [
