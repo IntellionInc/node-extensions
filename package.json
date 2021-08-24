@@ -39,6 +39,7 @@
 	},
 	"homepage": "https://github.com/Trade-Automation-System/node-extensions#readme",
 	"dependencies": {
+		"rimraf": "^3.0.2",
 		"esm": "^3.2.25"
 	},
 	"engines": {
