@@ -12,6 +12,9 @@ jobs:
           keys:
             - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
       - run:
+          name: authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+      - run:
           name: install packages
           command: npm ci
       - run:
@@ -48,4 +51,7 @@ jobs:
 workflows:
   orb-free-workflow:
     jobs:
-      - test
+    - test:
+        context:
+          - org-global
+          - Trade-Automation-System
