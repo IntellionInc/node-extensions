@@ -4,25 +4,29 @@ describe("Promise", () => {
 	describe("waitFor", () => {
 		const milliseconds = 5555;
 		const now = 160000000000;
+		const exampleTimeout = setTimeout(() => {
+			return;
+		});
 
 		const setTimeoutImplementation = (
-			callback: () => NodeJS.Timeout,
-			time: number
+			callback: () => void,
+			ms?: number
 		): NodeJS.Timeout => {
-			jest.advanceTimersByTime(time);
-			return callback();
+			jest.advanceTimersByTime(ms || 0);
+			callback();
+			return exampleTimeout;
 		};
 
 		beforeEach(() => {
 			jest.useFakeTimers();
 			jest.setSystemTime(now);
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
+
 			jest.spyOn(global, "setTimeout").mockImplementation(setTimeoutImplementation);
 		});
 
 		afterEach(() => {
 			jest.useRealTimers();
+			clearTimeout(exampleTimeout);
 		});
 
 		it("should wait for designated time before resolving", async () => {
