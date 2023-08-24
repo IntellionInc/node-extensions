@@ -1,6 +1,17 @@
 import "../src/String.ts";
 
 describe("String", () => {
+	describe("replaceMultiple", () => {
+		const [key1, key2, key3] = ["<KEY1>", "<KEY2>", "<KEY3>"];
+		const [value1, value2, value3] = ["Value1", "Value2", "Value3"];
+		const replaceMap = { [key1]: value1, [key2]: value2, [key3]: value3 };
+
+		const input = `Key1: ${key1}, Key2: ${key2}, Key3: ${key3}`;
+		const result = `Key1: ${value1}, Key2: ${value2}, Key3: ${value3}`;
+		it("should replace the key tags with corresponding values", () => {
+			expect(input.replaceMultiple(replaceMap)).toBe(result);
+		});
+	});
 	describe("toTitleCase", () => {
 		const cases = [
 			{
