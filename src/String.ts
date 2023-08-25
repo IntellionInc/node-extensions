@@ -1,6 +1,10 @@
 declare global {
 	interface String {
 		/**
+		 * Replaces occurances of keys of a given object in a string with the corresponding values.
+		 */
+		replaceMultiple(replaceMap: Record<string, any>): string;
+		/**
 		 * Converts given string to Title Case.
 		 */
 		toTitleCase(): string;
@@ -24,6 +28,12 @@ declare global {
 }
 
 Object.defineProperties(String.prototype, {
+	replaceMultiple: {
+		value: function (replaceMap: Record<string, any>) {
+			const matchExpression = new RegExp(Object.keys(replaceMap).join("|"), "g");
+			return this.replace(matchExpression, (matched: string) => replaceMap[matched]);
+		}
+	},
 	toTitleCase: {
 		value: function () {
 			return this.replace(
