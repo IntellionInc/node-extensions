@@ -1,4 +1,7 @@
+import { DateTime } from "luxon";
 import "../src/String.ts";
+
+jest.mock("luxon");
 
 describe("String", () => {
 	describe("replaceMultiple", () => {
@@ -134,6 +137,20 @@ describe("String", () => {
 			it("should return appropriate date object", () => {
 				expect(input.toDate()).toEqual(output);
 			});
+		});
+	});
+	describe("toDateTime", () => {
+		const input = "2021-01-01";
+
+		const mockDateTime = "some-luxon-date-time";
+
+		beforeEach(() => {
+			DateTime.fromJSDate = jest.fn().mockReturnValue(mockDateTime);
+		});
+
+		it("should convert given string to a luxon DateTime object", () => {
+			expect(input.toDateTime()).toEqual(mockDateTime);
+			expect(DateTime.fromJSDate).toHaveBeenCalledWith(input.toDate());
 		});
 	});
 });

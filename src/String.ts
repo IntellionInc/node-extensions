@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 declare global {
 	interface String {
 		/**
@@ -24,6 +26,10 @@ declare global {
 		 * Converts given string to a Number object.
 		 */
 		toDate(): Date;
+		/**
+		 * Converts givevn string to a Luxon DateTime object.
+		 */
+		toDateTime(): DateTime;
 	}
 }
 
@@ -69,6 +75,11 @@ Object.defineProperties(String.prototype, {
 	toDate: {
 		value: function () {
 			return new Date(this);
+		}
+	},
+	toDateTime: {
+		value: function () {
+			return DateTime.fromJSDate(this.toDate());
 		}
 	}
 });
