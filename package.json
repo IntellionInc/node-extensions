@@ -34,9 +34,6 @@
 	},
 	"author": "",
 	"license": "ISC",
-	"publishConfig": {
-		"access": "public"
-	},
 	"bugs": {
 		"url": "https://github.com/Trade-Automation-System/node-extensions/issues"
 	},
