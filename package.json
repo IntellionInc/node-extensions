@@ -30,14 +30,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Trade-Automation-System/node-extensions.git"
+		"url": "git+https://github.com/IntellionInc/node-extensions.git"
 	},
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/Trade-Automation-System/node-extensions/issues"
+		"url": "https://github.com/IntellionInc/node-extensions/issues"
 	},
-	"homepage": "https://github.com/Trade-Automation-System/node-extensions#readme",
+	"homepage": "https://github.com/IntellionInc/node-extensions#readme",
 	"dependencies": {
 		"esm": "^3.2.25",
 		"rimraf": "^3.0.2"
