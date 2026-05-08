@@ -1,4 +1,4 @@
-import "../src/Number.ts";
+import "../src/Number";
 
 describe("Number", () => {
 	describe("time conversions to milliseconds", () => {

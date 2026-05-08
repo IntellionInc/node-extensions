@@ -1,4 +1,4 @@
-import "../src/Promise.ts";
+import "../src/Promise";
 
 describe("Promise", () => {
 	describe("waitFor", () => {

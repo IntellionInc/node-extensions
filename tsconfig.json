@@ -1,22 +1,16 @@
 {
-  "compilerOptions": {
-    "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
-    "target": "ES2016",
-    "module": "commonjs",
-    "declaration": true,
-    "outDir": "./lib",
-    "strict": true,
-    "moduleResolution": "Node",
-    "emitDecoratorMetadata": true,
-  },
-  "include": [
-    "./src",
-    "./test",
-    "./index.ts"
-  ],
-  "exclude": [
-    "./node_modules",
-    "./**/__tests__/*"
-  ]
+	"compilerOptions": {
+		"experimentalDecorators": true,
+		"strictPropertyInitialization": false,
+		"target": "ES2016",
+		"module": "commonjs",
+		"declaration": true,
+		"outDir": "./lib",
+		"strict": true,
+		"moduleResolution": "Node",
+		"emitDecoratorMetadata": true,
+		"skipLibCheck": true
+	},
+	"include": ["./src", "./test", "./index.ts"],
+	"exclude": ["./node_modules", "./**/__tests__/*"]
 }

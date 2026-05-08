@@ -1,4 +1,4 @@
-import "../src/Object.ts";
+import "../src/Object";
 
 describe("Object", () => {
 	describe("toQueryString", () => {

@@ -1,4 +1,4 @@
-import "../src/Array.ts";
+import "../src/Array";
 
 describe("Array", () => {
 	const array1 = ["c", "d", 1, 3];
@@ -124,7 +124,7 @@ describe("Array", () => {
 			expect(mockAsync).toHaveBeenNthCalledWith(2, 1);
 			expect(mockResolve).toHaveBeenNthCalledWith(1, "some-value-1");
 			expect(mockResolve).toHaveBeenNthCalledWith(2, "some-value-2");
-			expect(mockCb).toBeCalledTimes(2);
+			expect(mockCb).toHaveBeenCalledTimes(2);
 		});
 	});
 

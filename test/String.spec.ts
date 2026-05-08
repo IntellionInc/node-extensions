@@ -1,4 +1,4 @@
-import "../src/String.ts";
+import "../src/String";
 
 describe("String", () => {
 	describe("replaceMultiple", () => {
